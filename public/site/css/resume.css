@@ -1,0 +1,111 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    background: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.remove-tag {
+    background: red;
+    color: white;
+    border: none;
+    margin-left: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.studying-group {
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.studying-group > label {
+    white-space: nowrap; /* Etiketi səliqəli saxlamaq üçün */
+    margin-right: 10px;
+}
+.studying-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#educationAdd {
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.employment-group {
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.employment-group > label {
+    white-space: nowrap; /* Etiketi səliqəli saxlamaq üçün */
+    margin-right: 10px;
+}
+.employment-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#employmentAdd {
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.knowledge-group {
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.knowledge-group > label {
+    white-space: nowrap; /* Etiketi səliqəli saxlamaq üçün */
+    margin-right: 10px;
+}
+.knowledge-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#knowledgeAdd {
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.project-group {
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.project-group > label {
+    white-space: nowrap; /* Etiketi səliqəli saxlamaq üçün */
+    margin-right: 10px;
+}
+.project-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#projectAdd {
+    font-size: 18px;
+    margin-left: 15px;
+}

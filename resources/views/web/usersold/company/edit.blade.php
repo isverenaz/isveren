@@ -1,0 +1,132 @@
+@extends('web.users.user-menu')
+@section('user.css')
+    <link href="{{ asset('web/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <!-- dropzone css -->
+    <link href="{{ asset('web/assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css">
+    {{--    <link rel="stylesheet" href="{{ asset('summernote/summernote.css') }}">--}}
+@endsection
+@section('user.section')
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 font-size-18">@lang('web.job_edit')</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            @if ( Session::get('errors'))
+                <div class="col-12 mt-1">
+                    <div class="alert alert-danger" role="alert">
+                        <div class="alert-body">{{ Session::get('errors') }}</div>
+                    </div>
+                </div>
+            @endif
+            @if (Session::get('success'))
+                <div class="col-12 mt-1">
+                    <div class="alert alert-success" role="alert">
+                        <div class="alert-body">{{ Session::get('success') }}</div>
+                    </div>
+                </div>
+            @endif
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('web.user.jobs.update',$job->id) }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <input id="title" name="title[az]" type="text" class="form-control" placeholder="@lang('web.title')" value="{{ json_decode($job, true)['title']['az'] }}">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <textarea class="form-control" name="description[az]" rows="3" placeholder="@lang('web.description')">{{ json_decode($job, true)['description']['az'] }}</textarea>
+                                    </div>
+                                </div>
+
+                                {{--<div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <div class="input-daterange input-group" id="project-date-inputgroup" data-provide="datepicker" data-date-format="yyyy-mm-dd"  data-date-container='#project-date-inputgroup' data-date-autoclose="true">
+                                            <input type="text" class="form-control" placeholder="Start Date" name="created_at" />
+                                            <input type="text" class="form-control" placeholder="End Date" name="updated_at" />
+                                        </div>
+                                    </div>
+                                </div>--}}
+
+                                <div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <?php
+                                        $input_string = $job->price;
+                                        $salary= explode('-', $input_string);
+                                        ?>
+                                        <div class="input-daterange input-group" >
+                                            <input type="number" class="form-control" value="{{isset($salary[0])? $salary[0]: ''}}" placeholder="@lang('web.min_salary')" name="min_salary" />
+                                            <input type="number" class="form-control" value="{{isset($salary[1])? $salary[1]: ''}}" placeholder="@lang('web.max_salary')" name="max_salary" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <div class="input-daterange input-group" >
+                                            <select class="form-control" name="city_id" id="input-city">
+                                                <option value="">@lang('web.city_choose')</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{$city->id}}" @if($city->id == $job->city_id) selected @endif>{{ json_decode($city, true)['name']['az'] }}</option>
+                                                @endforeach
+                                            </select>
+                                            <select class="form-control" name="company_id" id="input-company">
+                                                <option value="">@lang('web.company_choose')</option>
+                                                @foreach($companies as $company)
+                                                    <option value="{{$company->id}}" @if($company->id == $job->company_id) selected @endif>{{ json_decode($company, true)['name']['az'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-lg-14">
+                                        <div class="input-daterange input-group" >
+                                            <select class="form-control" name="category_id" id="input-category">
+                                                <option value="">@lang('web.category_choose')</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}" @if($category->id == (!empty($item->jobcategory->category_id)?$job->jobcategory->category_id: '')) selected @endif>{{ json_decode($category, true)['name']['az'] }}</option>
+                                                @endforeach
+                                            </select>
+                                            <select class="form-control" name="job_type_id" id="input-type">
+                                                <option value="">@lang('web.type_choose')</option>
+                                                @foreach($types as $type)
+                                                    <option value="{{$type->id}}" @if($type->id == $job->job_type_id) selected @endif>{{ json_decode($type, true)['name']['az'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-lg-1">
+                                        <button type="submit" class="btn btn-primary">@lang('web.save')</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('user.js')
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('web/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- dropzone plugin -->
+    <script src="{{ asset('web/assets/libs/dropzone/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset('summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('summernote/editor_summernote.js') }}"></script>
+@endsection

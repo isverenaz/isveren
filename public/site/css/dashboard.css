@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.job-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 767px) {
+    .job-item {
+        padding: 10px 15px !important;
+    }
+
+    .job-stats {
+        transform: translate(0px, 0px) !important;
+
+    }
+
+    .job-title {
+        font-size: 16px !important;
+        max-width: 200px;
+    }
+
+    .premium-job {
+        padding-top: 30px; /* Mobilde ekstra üst boşluk */
+    }
+
+    .premium-job::before {
+        top: 0 !important;; /* Etiketi resmin üst kısmına hizala */
+        font-size: 10px !important; /* Küçük yazı boyutu */
+        padding: 1px 6px; /* Etiketin boyutunu küçült */
+        right: 10px !important;
+    }
+    .new-job {
+        padding-top: 30px; /* Mobilde ekstra üst boşluk */
+    }
+
+    .new-job::before {
+        top: 0 !important;; /* Etiketi resmin üst kısmına hizala */
+        font-size: 10px !important; /* Küçük yazı boyutu */
+        padding: 1px 6px; /* Etiketin boyutunu küçült */
+        right: 10px !important;
+    }
+
+}
+
+.job-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    padding: 18px 25px;
+    transition: box-shadow 0.3s;
+}
+
+.job-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.job-logo {
+    flex: 0 0 50px;
+    margin-right: 15px;
+}
+
+.job-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.job-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Taşmayı engelle */
+}
+
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 5px;
+    white-space: nowrap; /* Taşmayı engelle */
+    overflow: hidden; /* Fazlalıkları gizle */
+    text-overflow: ellipsis; /* Üç nokta ekle */
+
+}
+
+.job-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.job-company {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    white-space: nowrap; /* Taşmayı engelle */
+    overflow: hidden; /* Fazlalıkları gizle */
+    text-overflow: ellipsis; /* Üç nokta ekle */
+}
+
+.job-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #777;
+    white-space: nowrap; /* Tek satırda tut */
+    transform: translate(0px, -12px);
+
+}
+
+.views {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    gap: 5px;
+}
+
+.premium-job {
+    border: 2px solid #28a745; /* Yeşil sınır */
+    position: relative; /* "Premium" etiketi için */
+}
+
+.premium-job::before {
+    content: "Premium";
+    position: absolute;
+    top: 0;
+    right: 23px;
+    background-color: #28a745;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.new-job {
+    /*border: 2px solid deepskyblue;*/
+    position: relative;
+}
+
+.new-job::before {
+    content: "Yeni";
+    position: absolute;
+    top: 0;
+    right: 23px;
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+@media (max-width: 767px) {
+    .wt-bnr-inr {
+        height: 380px;
+        margin-top: -45px;
+    }
+}

@@ -1,0 +1,34 @@
+User-agent: *
+Disallow: /admin/login
+Disallow: /user/account
+Disallow: /user/settings/
+Disallow: /user/jobs/list
+Disallow: /user/jobs/create
+Disallow: /user/jobs/edit/
+Disallow: /user/company/list
+Disallow: /user/cv
+Disallow: /user/job-seekers/list
+Disallow: /user/sub-category/
+
+
+
+Disallow: /api/
+Disallow: /private/
+
+Allow: /vacancies/
+Allow: /job-details/
+Allow: /job/search
+Allow: /blogs/
+Allow: /blog-details/
+Allow: /companies/
+Allow: /company-details/
+Allow: /cv/
+Allow: /cv-details/
+Allow: /professions/
+Allow: /autocomplete/
+Allow: /sitemap.xml
+Allow: /sitemap
+Allow: /company.xml
+Allow: /professions-sitemap.xml
+
+Sitemap: https://isveren.az/sitemap.xml
